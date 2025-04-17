@@ -1,8 +1,20 @@
+const express = require("express");
+const bodyParser = require("body-parser");
+const AWS = require("aws-sdk");
+
+AWS.config.update({ region: "us-east-1" });
+
+const ses = new AWS.SES();
+const app = express(); // Make sure the app is initialized here
+
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(express.static(__dirname));
+
 app.post("/book", (req, res) => {
   const { name, email, service, datetime } = req.body;
 
   const params = {
-    Source: "yashmakode03@gmail.com", // <== Replace with your verified SES email
+    Source: "yashmakode93@gmail.com", // Your verified SES email
     Destination: { ToAddresses: [email] },
     Message: {
       Subject: { Data: "Your Appointment is Confirmed" },
@@ -27,4 +39,8 @@ app.post("/book", (req, res) => {
       res.send("Appointment booked successfully. Confirmation email sent!");
     }
   });
+});
+
+app.listen(3000, () => {
+  console.log("Server running on http://localhost:3000");
 });
