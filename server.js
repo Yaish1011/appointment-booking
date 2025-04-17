@@ -2,7 +2,7 @@ app.post("/book", (req, res) => {
   const { name, email, service, datetime } = req.body;
 
   const params = {
-    Source: "your-verified-email@example.com", // <== Replace with your verified SES email
+    Source: "yashmakode03@gmail.com", // <== Replace with your verified SES email
     Destination: { ToAddresses: [email] },
     Message: {
       Subject: { Data: "Your Appointment is Confirmed" },
