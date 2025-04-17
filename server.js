@@ -2,7 +2,7 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const AWS = require("aws-sdk");
 
-AWS.config.update({ region: "us-east-1" });
+AWS.config.update({ region: "eu-north-1" });
 
 const ses = new AWS.SES();
 const app = express(); // Make sure the app is initialized here
